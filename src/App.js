@@ -1,20 +1,9 @@
-import React from 'react';
+import React ,{Component} from 'react';
 import AppStore from './AppStore';
 import './App.css';
 import AppAction from './AppAction';
-class Item extends React.Component{
-  removeItem = ()=> {
-    AppAction.removeItem(this.props.item);
-  }
-  render() {
-    return (
-      <h4 key={this.props.item} onClick={this.removeItem}>
-        {this.props.items[this.props.item]} (click to remove)
-      </h4>
-    );
-  }
-};
-class App extends React.Component{
+import Item from './Item';
+class App extends Component{
   state = {item:[]}
   getAppState() {
     return { items: AppStore.getAll() };
