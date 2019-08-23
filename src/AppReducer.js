@@ -2,7 +2,7 @@
 
 // Set the initial state to be used
 const initialState = {
-    items: ["yogi"]
+    items: ["Sample Item"]
 };
 
 // define and export reducer
