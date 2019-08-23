@@ -1,9 +1,10 @@
-
 // This file is base is based on https://github.com/vivek3003/flux-redux-migration, with some modifications
 // for flux's actionTypes and other validations
 
 import isPlainObject from 'lodash/isPlainObject';
-import { createStore } from 'redux';
+import {
+    createStore
+} from 'redux';
 /**
  * This is a copy of Redux's createStore. Only the dispatch function is modified.
  * It passes the action Type as parameter to the callbacks registered by store.subscribe *
@@ -164,7 +165,7 @@ export default function createFluxStore(reducer, initialState, enhancer) {
             if (typeof action.actionType === 'undefined') {
                 throw new Error(
                     'Actions may not have an undefined "type" property. ' +
-                        'Have you misspelled a constant?'
+                    'Have you misspelled a constant?'
                 );
             } else {
                 action.type = action.actionType;
@@ -206,13 +207,17 @@ export default function createFluxStore(reducer, initialState, enhancer) {
         }
 
         currentReducer = nextReducer;
-        dispatch({ type: ActionTypes.INIT });
+        dispatch({
+            type: ActionTypes.INIT
+        });
     }
 
     // When a store is created, an "INIT" action is dispatched so that every
     // reducer returns their initial state. This effectively populates
     // the initial state tree.
-    dispatch({ type: ActionTypes.INIT });
+    dispatch({
+        type: ActionTypes.INIT
+    });
 
     return {
         dispatch,

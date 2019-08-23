@@ -1,7 +1,9 @@
-import { Dispatcher } from "flux";
+import {
+  Dispatcher
+} from "flux";
 
 class FluxDispatcher extends Dispatcher {
-    dispatch(payload) {
+  dispatch(payload) {
     if (payload == null) {
       throw new Error("FluxDispatcher.dispatch: no payl-oad was given");
     }
