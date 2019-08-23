@@ -16,6 +16,6 @@ class AppAction {
         actionType: AppConstants.REMOVE_ITEM,
         item: item
         })
-    }    
+    }
 }
 export default new AppAction();

@@ -1,14 +1,33 @@
 import { EventEmitter } from "events";
-import Dispatcher from './FluxDispatcher'
+import createFluxStore from './createFluxStore';
+import appReducer from './AppReducer';
+import Dispatcher from './FluxDispatcher';
 var AppConstants = {
   ADD_ITEM: 'ADD_ITEM',
   REMOVE_ITEM: 'REMOVE_ITEM'
 };
 class AppStore extends EventEmitter{
+  
   _items = [];
+  clientsReduxStore = null;
   constructor() {
     super();
-    this._items = [];
+    this.clientsReduxStore = createFluxStore(appReducer);
+    this._items = this.clientsReduxStore.getState();
+    this.clientsReduxStore.subscribe(async function(action) {
+      // eslint-disable-next-line default-case
+      switch (action.actionType) {
+          case 'ADD_ITEM':
+              await this.create();
+              break;
+          case 'REMOVE_ITEM':
+              await this.destroy();
+              break;
+      }
+      // Notify of the redux-flux store change
+      this.emitChange();
+  }.bind(this))
+
   }
   getAll = function() {
       return this._items;

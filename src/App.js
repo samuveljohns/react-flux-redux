@@ -1,21 +1,17 @@
 import React from 'react';
 import AppStore from './AppStore';
 import './App.css';
-import AppAction from './AppAction';
-class Item extends React.Component{
-  removeItem = ()=> {
-    AppAction.removeItem(this.props.item);
-  }
-  render() {
-    return (
-      <h4 key={this.props.item} onClick={this.removeItem}>
-        {this.props.items[this.props.item]} (click to remove)
-      </h4>
-    );
-  }
-};
+import AppAction from './AppAction'; // Unused flux action after the migration
+import * as RAction from './AppReduxAction';
+import { connect } from 'react-redux';
+import Item from './Item';
 class App extends React.Component{
-  state = {item:[]}
+  constructor(props){
+    super(props)
+    this.state = {item:[]};
+    console.log(this.props)
+
+  }
   getAppState() {
     return { items: AppStore.getAll() };
   }
@@ -32,13 +28,16 @@ class App extends React.Component{
   componentWillUnmount() {
     AppStore.removeChangeListener(this._onChange);
   }
-  addItem() {
-    AppAction.addItem("item added on " + Date.now());
+  addItem = ()=>{
+    //AppAction.addItem("item added on " + Date.now()); //flux action
+    this.props.addItemR("item added on " + Date.now()) //redux action
   }
   render() {
     var itemNodes = [];
-    for (var item in this.state.items) {
-      itemNodes.push(<Item items={this.state.items} item={item} />);
+    console.log(this.props.items)
+    for (var item in this.props.items) {
+      console.log(item)
+      itemNodes.push(<Item items={this.props.items} item={item} />);
     }
     return (
       <div className="wrapper">
@@ -49,4 +48,11 @@ class App extends React.Component{
   }
 };
 
-export default App;
+function mapStateToProps(state, ownProps){
+  console.log(state)
+  return {
+    items : state.items.items
+  }
+}
+
+export default connect(mapStateToProps,RAction)(App);
