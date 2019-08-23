@@ -13,21 +13,21 @@ export default function appReducer(state = initialState, action) {
 
         case 'REMOVE_ITEM':
             console.log(action)
-            state.items.splice(action.index,1);
+            state.items.splice(action.index, 1);
             return {
                 items: JSON.parse(JSON.stringify(state.items))
             };
-        // Set the result of the async request to state
+            // Set the result of the async request to state
         case 'ADD_ITEM':
             return {
-                items: [...state.items,action.item]
+                items: [...state.items, action.item]
             };
-    
-
-        // Toggles the direction of the results
 
 
-        // return the default state if no action was found
+            // Toggles the direction of the results
+
+
+            // return the default state if no action was found
         default:
             return state;
     }

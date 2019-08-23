@@ -1,13 +1,13 @@
-export function addItemR(item){
+export function addItemR(item) {
     return {
-        type:'ADD_ITEM',
+        type: 'ADD_ITEM',
         item
     }
 }
-export function remoteItemR(index){
-    
+export function remoteItemR(index) {
+
     return {
-        type:'REMOVE_ITEM',
+        type: 'REMOVE_ITEM',
         index
     }
 }

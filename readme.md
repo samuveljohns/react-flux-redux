@@ -4,7 +4,6 @@
 
 Migrating Simple TODO from Flux to Redux without removing
 the flux completely
-`
 
 End with an example of getting some data out of the system or using it for a little demo
 
