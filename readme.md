@@ -7,6 +7,14 @@ the flux completely
 
 End with an example of getting some data out of the system or using it for a little demo
 
+##Setup
+
+```
+npm install
+npm start
+
+```
+
 ## Acknowledgments
 
 https://medium.com/gumgum-tech/migrating-from-flux-to-redux-f234b80fc608
