@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import AppAction from './AppAction';
+import AppAction from '../FluxActions/AppAction';
 
 class Item extends Component{
     removeItem = ()=> {

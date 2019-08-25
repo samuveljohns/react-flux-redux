@@ -1,7 +1,7 @@
 import React ,{Component} from 'react';
-import AppStore from './AppStore';
-import './App.css';
-import AppAction from './AppAction';
+import AppStore from '../FluxStore/AppStore';
+import '../styles/App.css';
+import AppAction from '../FluxActions/AppAction';
 import Item from './Item';
 class App extends Component{
   state = {item:[]}

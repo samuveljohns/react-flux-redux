@@ -1,5 +1,5 @@
 import { EventEmitter } from "events";
-import Dispatcher from './FluxDispatcher'
+import Dispatcher from '../FluxActions/FluxDispatcher'
 var AppConstants = {
   ADD_ITEM: 'ADD_ITEM',
   REMOVE_ITEM: 'REMOVE_ITEM'
