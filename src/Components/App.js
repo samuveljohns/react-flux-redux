@@ -19,12 +19,21 @@ class App extends Component{
   componentDidMount() {
     AppStore.addChangeListener(this._onChange);
     AppStore.register();
+    this.setState({items:this.props.items});
   }
+
+  componentDidUpdate(prevProps, prevState){
+    if(prevState.items!==this.props.items)
+      this.setState({items:this.props.items})
+  }
+
   componentWillUnmount() {
     AppStore.removeChangeListener(this._onChange);
   }
-  addItem() {
-    AppAction.addItem("item added on " + Date.now());
+  
+  addItem = ()=>{
+    AppAction.addItem("item added on " + Date.now()); // Flux Action
+    this.props.addItem("item added on " + Date.now()); // Redux Action
   }
   render() {
     var itemNodes = [];
@@ -42,7 +51,7 @@ class App extends Component{
 
 function mapStateToProps(states, ownProps){
   return {
-
+    items: states.items
   }
 }
 

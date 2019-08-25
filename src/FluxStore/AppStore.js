@@ -14,8 +14,7 @@ class AppStore extends EventEmitter{
       return this._items;
   };
   create = function(item) {
-      var id = Date.now();
-      this._items[id] = item;
+      this._items = [...this._items,item];
   };
   destroy = function(item) {
     delete this._items[item];

@@ -14,7 +14,8 @@ export default function(state=initialStates.items, action){
         case "ADD_ITEM":
             return [...state,payload];
         case "REMOVE_ITEM":
-            return [...state,payload];
+            state.splice(payload,1);  //payload is index from where item has to be removed
+            return JSON.parse(JSON.stringify(state));
         default:
             return state;
     }
