@@ -14,6 +14,9 @@ npm install
 npm start
 ```
 
+## DEMO
+https://flux-redux-migrate.herokuapp.com/
+
 ## Acknowledgments
 
 https://medium.com/gumgum-tech/migrating-from-flux-to-redux-f234b80fc608
