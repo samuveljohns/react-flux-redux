@@ -3,8 +3,10 @@ import AppStore from '../FluxStore/AppStore';
 import '../styles/App.css';
 import AppAction from '../FluxActions/AppAction';
 import Item from './Item';
+import {connect} from 'react-redux';
+import * as reduxActions from '../ReduxActions/AppAction';
 class App extends Component{
-  state = {item:[]}
+  state = {items:[]}
   getAppState() {
     return { items: AppStore.getAll() };
   }
@@ -38,4 +40,10 @@ class App extends Component{
   }
 };
 
-export default App;
+function mapStateToProps(states, ownProps){
+  return {
+
+  }
+}
+
+export default connect(mapStateToProps, reduxActions)(App);
